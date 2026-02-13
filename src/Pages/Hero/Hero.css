@@ -1,0 +1,94 @@
+@keyframes fadeIn { /* fadeIn animation */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hero {
+    position: relative; /* Gør at hero-sektionen kan indeholde absolut positionerede elementer */
+    z-index: 1; /* Sikrer at min hero-sektionen er over baggrunden */
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 90vh;
+    margin-top: 70px;
+    padding: 0 250px;
+    animation: fadeIn 0.6s ease-in;
+}
+
+.hero h1 {
+    font-size: 92px;
+    font-weight: 700;
+    max-width: 900px;
+    color: #000;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.hero p {
+    max-width: 700px;
+    font-size: 27px;
+    color: #000000;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+}
+
+.hero-icons { 
+    display: flex;
+    flex-direction: row;      /* vandret */
+    gap: 12px;                /* afstand mellem ikonerne */
+    align-items: center;
+}
+.Linkedin-icon{
+    width: 40px;              /* bredde på ikonerne */
+    height: 40px;             /* højde på ikonerne */
+    cursor: pointer;          /* ændrer cursor til pointer ved hover */
+}
+
+.Github-icon {
+    width: 53px;              /* bredde på ikonerne */
+    height: 53px;             /* højde på ikonerne */
+    cursor: pointer;          /* ændrer cursor til pointer ved hover */
+}
+
+.hero-content .hero-contact {
+    font-size: 27px;
+    color: #000000;
+    margin-top: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-image img {
+    width: 553px;
+    height: 549px;
+    border-radius: 50%;
+    position: relative; /* Gør at pseudo-elementet kan placeres relativt til billedet */
+    z-index: 20; /* Sikrer at billedet er over gradienten */
+}
+
+.hero-image::before {
+    content: ''; /* Pseudo-element til gradient bag billedet */
+    position: absolute;
+    width: 553px;
+    height: 549px;
+    border-radius: 50%;
+    background: conic-gradient(from 129deg, rgba(224, 112, 153, 0.5) 0%, rgba(0, 188, 212, 0.3) 100%);
+    filter: blur(30px);
+    z-index: 10; /* Placeres bag billedet */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrerer pseudo-elementet */
+}

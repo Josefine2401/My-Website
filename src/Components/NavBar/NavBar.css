@@ -1,0 +1,57 @@
+@keyframes fadeIn { /* fadeIn animation */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%; /*Gør at navbaren fylder hele bredden af skærmen*/
+  height: 100px; 
+  display: flex; /*Gør at elementerne i navbaren placeres i en række*/
+  align-items: center;
+  z-index: 100; /*Sikrer at navbaren altid er øverst*/
+  animation: fadeIn 0.6s ease-in;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-name {
+  font-size: 24px; 
+  font-weight: 600; /*Bold*/
+  color: #000000;
+  margin-right: auto; 
+  margin-left: 250px; /*Symmetrisk værdi fra kant til mit navn*/
+}
+
+.navbar-name a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 93px; /*Afstand mellem mine links*/
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 250px; /*Symmetrisk værdi fra kant til links*/
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #000000;
+  font-weight: 600;
+  transition: color 0.3s, font-weight 0.3s;;
+}
+
+.navbar-links a:hover {
+  color: #000000;
+  font-weight: 600;
+}

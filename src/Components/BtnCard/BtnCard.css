@@ -1,0 +1,20 @@
+.button-card {
+    display: inline-block;
+    margin: 10px;
+}
+
+.btn-card-button {
+    border: none;
+    font-size: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.btn-card-button:hover {
+    transform: translateY(-5px);
+    box-shadow: -20px 15px 40px rgba(201, 201, 201, 0.5);
+}
