@@ -27,6 +27,8 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
   box-shadow: 5px 5px 6px #dadada,
                -5px -5px 6px #f6f6f6;
   transition: 0.4s;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -47,18 +49,21 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
   border-radius: 15px;
   box-shadow: inset 8px 8px 10px #c3c3c3,
             inset -8px -8px 10px #cfcfcf;
+  object-fit: cover;
 }
 
 .card-body {
   margin: 13px 0 0 10px;
   color: rgb(31, 31, 31);
   font-size: 17px;
+  flex-grow: 1;
 }
 
-.card-link {
-  display: inline-block;
+.card-info {
   margin: 15px 0 0 10px;
   color: #000000;
-  text-decoration: none;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 800;
 }
+
+

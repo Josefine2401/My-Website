@@ -181,10 +181,61 @@ html {
 }
 
 .projects {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 30px;
-    margin-top: 20px;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  margin-top: 20px;
+  align-items: stretch;
 }
 
+.project-clickable {
+  display: flex;
+  cursor: pointer;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* Modal content styles */
+.modal-content {
+  background: #ffffff;
+  width: 35%;
+  max-height: 75vh;
+  overflow-y: auto;
+  border-radius: 30px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button styles */
+.modal-close {
+  position: absolute;
+  top: 475px;
+  right: 50px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Close button hover effect */
+.modal-close:hover {
+  color: #666;
+}

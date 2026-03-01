@@ -4,13 +4,24 @@ import { EducationCard } from '../../Components/EducationCard/EducationCard';
 import { ExperienceCard } from '../../Components/ExperienceCard/ExperienceCard';
 import { ProjectCard } from '../../Components/ProjectCard/ProjectCard';
 import BtnCard from '../../Components/BtnCard/BtnCard';
-import App_Pages from '../../Assets/project-images/App_Pages.jpg';  
-import Portfolio_Image from '../../Assets/project-images/Portfolio_Image.png';
-import FortuneTeller_Image from '../../Assets/project-images/FortuneTeller.png';
-
-
+import ProjectsData from '../../data/ProjectsData';
+import { useEffect, useState } from 'react';
+import ProjectPage from '../../Components/ProjectPage/ProjectPage';
 
 export const Portfolio = () => { 
+    const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  const openProject = (p) => setSelectedProject(p);
+  const closeProject = () => setSelectedProject(null);
+
   const educationData = [
     {
       years: '2023-2026',
@@ -68,32 +79,6 @@ export const Portfolio = () => {
     {text: 'Canva'},
 
   ]
-
-  const project = [ 
-    { 
-      image: App_Pages,
-      title: 'PlantWhisperer',
-      description: 'Projektet undersøger, hvordan en LLM-baseret chatbot kan anvendes i køkkenhavearbejde. Gennem en app interagerer brugere med deres planter via chatbots med individuelle personligheder og kontekstbaseret plejevejledning.',
-      link: ''
-    },
-    { 
-      image: Portfolio_Image,
-      title: 'Min portfolio hjemmeside', 
-      description: 'React-baseret portfolio hjemmeside med komponent-baseret arkitektur.',
-      link: 'https://projekt2.example.com'
-    },
-
-    { 
-      image: FortuneTeller_Image,
-      title: 'Fortune Teller: Minigames', 
-      description: 'Dette eksamensprojekt er udviklet i Java og JavaFX og består af tre forskellige minispil, som brugeren kan afprøve. Projektets primære fokus har været funktionalitet frem for grafisk udtryk.' },
-    
-    { 
-      title: 'Portfolio for en PHD studerende', 
-      description: 'Projektet omfatter design og udvikling af en portfoliohjemmeside for en Ph.d.-studerende inden for datalogi. Der er lagt stor vægt på tæt dialog og løbende samarbejde for at sikre, at hjemmesiden afspejler den studerendes faglige profil og behov. Projektet er et igangværende arbejde, som er under udvikling.',
-      link: 'https://phd-portfolio.example.com'
-    },
-  ];
 
   return (
     <div className='portfolio'>
@@ -170,16 +155,33 @@ export const Portfolio = () => {
           </div>
 
           <div className="projects">
-            {project.map((project, index) => (
-              <ProjectCard 
-                key={index}
-                cardImage={project.image}
-                cardTitle={project.title}
-                cardBody={project.description}
-                cardLink={project.link}
-              />
+            {ProjectsData.map((p) => (
+              <div
+                key={p.slug}
+                className="project-clickable"
+                onClick={() => openProject(p)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => (e.key === 'Enter' ? openProject(p) : null)}
+              >
+                <ProjectCard 
+                  cardImage={p.image}
+                  cardTitle={p.title}
+                  cardBody={p.description}
+                  cardLink={p.link}
+                />
+              </div>
             ))}
           </div>
+
+          {selectedProject && (
+            <div className="modal-overlay" onClick={closeProject}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="modal-close" onClick={closeProject} aria-label="Luk">✕</button>
+                <ProjectPage project={selectedProject} />
+              </div>
+            </div>
+          )}
         </div>
     </div>
   )

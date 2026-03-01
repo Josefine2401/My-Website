@@ -28,7 +28,7 @@ export const ProjectCard = ({ cardImage, cardTitle, cardBody, cardLink }) => {
       {cardImage && <img src={cardImage} alt={cardTitle} className="card-image" />}      
       <p class="card-title">{cardTitle}</p>
       <p class="card-body">{cardBody}</p>
-      <a href={cardLink} class="card-link">Læs mere</a>
+      <p class="card-info">Læs mere</p>
     </div>
   );
 };
